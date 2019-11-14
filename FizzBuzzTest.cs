@@ -22,6 +22,7 @@ namespace FizzBuzz01
             Assert.AreEqual("1", FizzBuzzer.Eval(1));
             Assert.AreEqual("2", FizzBuzzer.Eval(2));
             Assert.AreEqual("4", FizzBuzzer.Eval(4));
+            Assert.AreEqual("7", FizzBuzzer.Eval(7));
         }
         [TestMethod]
         public void Singles()
@@ -39,6 +40,7 @@ namespace FizzBuzz01
         public void Combined()
         {
             Assert.AreEqual("FizzBuzz", FizzBuzzer.Eval(15));
+            Assert.AreEqual("FizzBuzz", FizzBuzzer.Eval(30));
         }
     }
 }
