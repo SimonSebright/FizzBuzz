@@ -12,12 +12,12 @@ namespace FizzBuzz01
                 return test % divisor == 0 ? whatIfDivisible : String.Empty;
             }
 
-            var factors = new[]{ new { factor = 3, term = "Fizz" }, new { factor = 5, term = "Buzz" } };
+            var factors = new[]{ new { divisor = 3, term = "Fizz" }, new { divisor = 5, term = "Buzz" } };
             string factorterms = string.Empty;
 
             foreach (var factor in factors)
             {
-                factorterms += Test(n, factor.factor, factor.term);
+                factorterms += Test(n, factor.divisor, factor.term);
             }
             
             return String.IsNullOrEmpty(factorterms) ? n.ToString() : factorterms;
