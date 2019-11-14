@@ -5,12 +5,16 @@ namespace FizzBuzz01
 {
     static class FizzBuzzer
     {
-        internal static string Eval(int v)
+        internal static string Eval(int n)
         {
-            string fizzness = v % 3 == 0 ? "Fizz" : String.Empty;
-            string buzzness = v % 5 == 0 ? "Buzz" : String.Empty;
+            string Test(int test, int divisor, string whatIfDivisible)
+            {
+                return test % divisor == 0 ? whatIfDivisible : String.Empty;
+            }
+            string fizzness = Test(n, 3, "Fizz");
+            string buzzness = Test(n, 5, "Buzz");
             string fizzBuzzness = fizzness + buzzness;
-            return String.IsNullOrEmpty(fizzBuzzness) ? v.ToString() : fizzBuzzness;
+            return String.IsNullOrEmpty(fizzBuzzness) ? n.ToString() : fizzBuzzness;
         }
     }
     [TestClass]
