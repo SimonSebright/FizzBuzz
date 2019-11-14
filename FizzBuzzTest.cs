@@ -11,10 +11,16 @@ namespace FizzBuzz01
             {
                 return test % divisor == 0 ? whatIfDivisible : String.Empty;
             }
-            string fizzness = Test(n, 3, "Fizz");
-            string buzzness = Test(n, 5, "Buzz");
-            string fizzBuzzness = fizzness + buzzness;
-            return String.IsNullOrEmpty(fizzBuzzness) ? n.ToString() : fizzBuzzness;
+
+            var factors = new[]{ new { factor = 3, term = "Fizz" }, new { factor = 5, term = "Buzz" } };
+            string factorterms = string.Empty;
+
+            foreach (var factor in factors)
+            {
+                factorterms += Test(n, factor.factor, factor.term);
+            }
+            
+            return String.IsNullOrEmpty(factorterms) ? n.ToString() : factorterms;
         }
     }
     [TestClass]
