@@ -7,22 +7,26 @@ namespace FizzBuzz01
     {
         internal static string Eval(int v)
         {
-            return v%15 == 0 ? "FizzBuzz":
-                    v%3 == 0 ? "Fizz" : 
-                        v%5 == 0 ? "Buzz" : 
-                            v.ToString();
+            string fizzness = v % 3 == 0 ? "Fizz" : String.Empty;
+            string buzzness = v % 5 == 0 ? "Buzz" : String.Empty;
+            string fizzBuzzness = fizzness + buzzness;
+            return String.IsNullOrEmpty(fizzBuzzness) ? v.ToString() : fizzBuzzness;
         }
     }
     [TestClass]
     public class FizzBuzzTest
     {
         [TestMethod]
-        public void Singles()
+        public void Numbers()
         {
             Assert.AreEqual("1", FizzBuzzer.Eval(1));
             Assert.AreEqual("2", FizzBuzzer.Eval(2));
-            Assert.AreEqual("Fizz", FizzBuzzer.Eval(3));
             Assert.AreEqual("4", FizzBuzzer.Eval(4));
+        }
+        [TestMethod]
+        public void Singles()
+        {
+            Assert.AreEqual("Fizz", FizzBuzzer.Eval(3));
             Assert.AreEqual("Buzz", FizzBuzzer.Eval(5));
         }
         [TestMethod]
