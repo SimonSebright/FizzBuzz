@@ -7,8 +7,10 @@ namespace FizzBuzz01
     {
         internal static string Eval(int v)
         {
-            return v%3 == 0 ? "Fizz" : 
-                   v%5 == 0 ? "Buzz" : v.ToString();
+            return v%15 == 0 ? "FizzBuzz":
+                    v%3 == 0 ? "Fizz" : 
+                        v%5 == 0 ? "Buzz" : 
+                            v.ToString();
         }
     }
     [TestClass]
@@ -28,6 +30,11 @@ namespace FizzBuzz01
         {
             Assert.AreEqual("Fizz", FizzBuzzer.Eval(6));
             Assert.AreEqual("Buzz", FizzBuzzer.Eval(10));
+        }
+        [TestMethod]
+        public void Combined()
+        {
+            Assert.AreEqual("FizzBuzz", FizzBuzzer.Eval(15));
         }
     }
 }
