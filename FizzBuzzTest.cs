@@ -7,7 +7,7 @@ namespace FizzBuzz01
     {
         internal static object Eval(int v)
         {
-            return 1;
+            return v == 3 ? (object)"Fizz" : v;
         }
     }
     [TestClass]
@@ -17,6 +17,8 @@ namespace FizzBuzz01
         public void Start()
         {
             Assert.AreEqual(1, FizzBuzzer.Eval(1));
+            Assert.AreEqual(2, FizzBuzzer.Eval(2));
+            Assert.AreEqual("Fizz", FizzBuzzer.Eval(3));
         }
     }
 }
