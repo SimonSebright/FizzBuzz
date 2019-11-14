@@ -8,13 +8,8 @@ namespace FizzBuzz01
     {
         internal static string Eval(int n)
         {
-            string Test(int test, int divisor, string whatIfDivisible)
-            {
-                return test % divisor == 0 ? whatIfDivisible : String.Empty;
-            }
-
             var factors = new[]{ new { divisor = 3, term = "Fizz" }, new { divisor = 5, term = "Buzz" } };
-            string factorterms = factors.Aggregate(String.Empty, (a, b) => { return a + Test(n, b.divisor, b.term); });
+            string factorterms = factors.Aggregate(String.Empty, (a, b) => { return a + (n % b.divisor == 0 ? b.term : string.Empty); });
 
             return String.IsNullOrEmpty(factorterms) ? n.ToString() : factorterms;
         }
