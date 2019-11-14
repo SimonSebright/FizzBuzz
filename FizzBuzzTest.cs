@@ -1,5 +1,6 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
 
 namespace FizzBuzz01
 {
@@ -13,13 +14,8 @@ namespace FizzBuzz01
             }
 
             var factors = new[]{ new { divisor = 3, term = "Fizz" }, new { divisor = 5, term = "Buzz" } };
-            string factorterms = string.Empty;
+            string factorterms = factors.Aggregate(String.Empty, (a, b) => { return a + Test(n, b.divisor, b.term); });
 
-            foreach (var factor in factors)
-            {
-                factorterms += Test(n, factor.divisor, factor.term);
-            }
-            
             return String.IsNullOrEmpty(factorterms) ? n.ToString() : factorterms;
         }
     }
