@@ -1,6 +1,7 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace FizzBuzz01
 {
@@ -8,10 +9,23 @@ namespace FizzBuzz01
     {
         internal static string Eval(int n)
         {
-            var factors = new[]{ new { divisor = 3, term = "Fizz" }, new { divisor = 5, term = "Buzz" } };
+            var factors = new[] { new { divisor = 3, term = "Fizz" }, new { divisor = 5, term = "Buzz" } };
             string factorterms = factors.Aggregate(String.Empty, (a, b) => { return a + (n % b.divisor == 0 ? b.term : string.Empty); });
+            return FirstNonEmpty(new object[] { factorterms, n });
+        }
 
-            return String.IsNullOrEmpty(factorterms) ? n.ToString() : factorterms;
+        internal static string FirstNonEmpty(object[] values)
+        {
+            foreach (object o in values)
+            {
+                string s = o.ToString();
+                if (!String.IsNullOrEmpty(s))
+                {
+                    return s;
+                }
+            }
+
+            throw new ArgumentException("FirstNonEmpty given collection with no empty strings");
         }
     }
     [TestClass]
